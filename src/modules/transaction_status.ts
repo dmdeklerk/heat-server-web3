@@ -8,8 +8,8 @@ export async function transactionStatus(context: CallContext, param: Transaction
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const confirmations = undefined;
-    const isAccepted = undefined;
+    const confirmations: number = 0;
+    const isAccepted: boolean = false;
     
     return {
       value: {

@@ -12,12 +12,12 @@ export async function utxoLookup(context: CallContext, param: UtxoLookupParam): 
 
     // Process 'data' while populating result array
     const func = (input) => {
-      const value: string = undefined
-      const txid: string = undefined
-      const vout: number = undefined
-      const confirmations: number = undefined
-      const lockTime: number = undefined
-      const height: number = undefined
+      const value: string = ''
+      const txid: string = ''
+      const vout: number = 0
+      const confirmations: number = 0
+      const lockTime: number = 0
+      const height: number = 0
       return {
         value, txid, vout, confirmations, lockTime, height
       }

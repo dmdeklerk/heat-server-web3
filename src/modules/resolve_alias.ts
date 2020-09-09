@@ -8,8 +8,8 @@ export async function resolveAlias(context: CallContext, param: ResolveAliasPara
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const addrXpub: string = undefined;
-    const isPermanent: boolean = undefined;
+    const addrXpub: string = '';
+    const isPermanent: boolean = false;
     
     return {
       value: {

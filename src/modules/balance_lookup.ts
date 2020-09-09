@@ -8,8 +8,8 @@ export async function balanceLookup(context: CallContext, param: BalanceLookupPa
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const value: string = undefined;
-    const exists: boolean = undefined;
+    const value: string = '';
+    const exists: boolean = false;
     
     return {
       value: {

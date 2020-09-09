@@ -12,10 +12,10 @@ export async function tokenDiscovery(context: CallContext, param: TokenDiscovery
 
     // Process 'data' while populating result array
     const func = (input) => {
-      const assetId: string = undefined
-      const assetType: number = undefined
-      const value: string = undefined
-      const exists: boolean = undefined
+      const assetId: string = ''
+      const assetType: number = 0
+      const value: string = ''
+      const exists: boolean = false
       return {
         assetId, assetType, value, exists
       }

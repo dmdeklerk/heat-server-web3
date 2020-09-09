@@ -7,9 +7,9 @@ export async function networkStatus(context: CallContext, param: NetworkStatusPa
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const lastBlockTime = undefined;
-    const lastBlockHeight = undefined;
-    const lastBlockId = undefined;
+    const lastBlockTime: Date = new Date();
+    const lastBlockHeight: number = 0;
+    const lastBlockId: string = '';
     
     return {
       value: {

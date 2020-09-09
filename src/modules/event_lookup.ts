@@ -12,10 +12,10 @@ export async function eventLookup(context: CallContext, param: EventLookupParam)
 
     // Process 'data' while populating result array
     const func = (input) => {
-      const timestamp: number = undefined
-      const sourceId: string = undefined
-      const sourceType: SourceTypes = undefined
-      const confirmations: number = undefined
+      const timestamp: number = 0
+      const sourceId: string = ''
+      const sourceType: SourceTypes = 0
+      const confirmations: number = 0
       const events: Array<EventLookupEvent> = []
       return {
         timestamp, sourceId, sourceType, confirmations, events

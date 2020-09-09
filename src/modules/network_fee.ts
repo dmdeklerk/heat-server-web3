@@ -7,8 +7,8 @@ export async function networkFee(context: CallContext, param: NetworkFeeParam): 
     const json = await req.get(url);
     const data = tryParse(json);
 
-    const gasPriceWei = undefined;
-    const satByte = undefined;
+    const gasPriceWei: string = '0';
+    const satByte: string = '0';
 
     return {
       value: {

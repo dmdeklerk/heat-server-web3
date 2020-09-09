@@ -8,7 +8,7 @@ export async function publicKeyLookup(context: CallContext, param: PublicKeyLook
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const publicKey: string = undefined;
+    const publicKey: string = '';
     
     return {
       value: {

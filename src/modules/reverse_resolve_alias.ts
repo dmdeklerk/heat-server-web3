@@ -8,8 +8,8 @@ export async function reverseResolveAlias(context: CallContext, param: ReverseRe
     const json = await req.get(url);
     const data = tryParse(json);
     
-    const alias: string = undefined;
-    const isPermanent: boolean = undefined;
+    const alias: string = '';
+    const isPermanent: boolean = false;
     
     return {
       value: {
