@@ -1,4 +1,4 @@
-import { ExplorerApi, RateLimiterClass, ExplorerMiddleware, ExplorerBase } from 'heat-server-common'
+import { RateLimiterClass, ExplorerMiddleware, ExplorerBase } from 'heat-server-common'
 import { balanceLookup } from './modules/balance_lookup';
 import { eventLookup } from './modules/event_lookup';
 import { networkFee } from './modules/network_fee';
@@ -9,6 +9,7 @@ import { reverseResolveAlias } from './modules/reverse_resolve_alias'
 import { tokenDiscovery } from './modules/token_discovery'
 import { transactionStatus } from './modules/transaction_status'
 import { utxoLookup } from './modules/utxo_lookup'
+import { broadcast } from './modules/broadcast'
 import { ModuleProvider } from 'heat-server-common/dist/types/module_provider.interface';
 
 /* ------------------- Configuration Start ------------------- */
@@ -20,6 +21,7 @@ const ID = "heat"
 const modules: ModuleProvider = {
   balanceLookup,
   eventLookup,
+  broadcast,
   networkFee,
   networkStatus,
   publicKeyLookup,
