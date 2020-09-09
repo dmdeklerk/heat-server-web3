@@ -1,12 +1,12 @@
-import { UtxoLookupParam, UtxoLookupResult, tryParse, CallContext } from 'heat-server-common'
+import { UtxoLookupParam, UtxoLookupResult, tryParse, CallContext, ModuleResponse } from 'heat-server-common'
 
-export async function utxoLookup(context: CallContext, param: UtxoLookupParam): Promise<{ error?: string, value?: Array<UtxoLookupResult> }> {
+export async function utxoLookup(context: CallContext, param: UtxoLookupParam): Promise<ModuleResponse<Array<UtxoLookupResult>>> {
   try {
-    const { req, protocol, host } = context
+    const { req, protocol, host, logger } = context
     const { addrXpub, assetType } = param
     const url = `${protocol}://${host}/api/UTXO-LOOKUP?assetType=${assetType}&addrXpub=${addrXpub}`;
     const json = await req.get(url);
-    const data = tryParse(json);
+    const data = tryParse(json, logger);
 
     const result: Array<UtxoLookupResult> = []
 

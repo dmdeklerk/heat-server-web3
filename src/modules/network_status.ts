@@ -1,11 +1,11 @@
-import { NetworkStatusParam, NetworkStatusResult, tryParse, CallContext } from 'heat-server-common'
+import { NetworkStatusParam, NetworkStatusResult, tryParse, CallContext, ModuleResponse } from 'heat-server-common'
 
-export async function networkStatus(context: CallContext, param: NetworkStatusParam): Promise<{ error?: string, value?: NetworkStatusResult }> {
+export async function networkStatus(context: CallContext, param: NetworkStatusParam): Promise<ModuleResponse<NetworkStatusResult>> {
   try {
-    const { req, protocol, host } = context
+    const { req, protocol, host, logger } = context
     const url = `${protocol}://${host}/api/GET-NETWORK-STATUS`;
     const json = await req.get(url);
-    const data = tryParse(json);
+    const data = tryParse(json, logger);
     
     const lastBlockTime: Date = new Date();
     const lastBlockHeight: number = 0;

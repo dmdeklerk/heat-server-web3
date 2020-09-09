@@ -1,12 +1,12 @@
-import { EventLookupParam, EventLookupResult, EventLookupEvent, tryParse, SourceTypes, CallContext } from 'heat-server-common'
+import { EventLookupParam, EventLookupResult, EventLookupEvent, tryParse, SourceTypes, CallContext, ModuleResponse } from 'heat-server-common'
 
-export async function eventLookup(context: CallContext, param: EventLookupParam): Promise<{ error?: string, value?: Array<EventLookupResult> }> {
+export async function eventLookup(context: CallContext, param: EventLookupParam): Promise<ModuleResponse<Array<EventLookupResult>>> {
   try {
-    const { req, protocol, host } = context
+    const { req, protocol, host, logger } = context
     const { blockchain, assetType, assetId, addrXpub, from, to, minimal } = param
     const url = `${protocol}://${host}/api/EVENT_LOOKUP?assetType=${assetType}&addrXpub=${addrXpub}&from=${from}&to=${to}`;
     const json = await req.get(url);
-    const data = tryParse(json);
+    const data = tryParse(json, logger);
 
     const result: Array<EventLookupResult> = []
 

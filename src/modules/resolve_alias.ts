@@ -1,12 +1,12 @@
-import { ResolveAliasParam, ResolveAliasResult, tryParse, CallContext } from 'heat-server-common'
+import { ResolveAliasParam, ResolveAliasResult, tryParse, CallContext, ModuleResponse } from 'heat-server-common'
 
-export async function resolveAlias(context: CallContext, param: ResolveAliasParam): Promise<{ error?: string, value?: ResolveAliasResult }> {
+export async function resolveAlias(context: CallContext, param: ResolveAliasParam): Promise<ModuleResponse<ResolveAliasResult>> {
   try {
-    const { req, protocol, host } = context
+    const { req, protocol, host, logger } = context
     const { alias } = param
     const url = `${protocol}://${host}/api/RESOLVE_ALIAS?alias=${alias}`;
     const json = await req.get(url);
-    const data = tryParse(json);
+    const data = tryParse(json, logger);
     
     const addrXpub: string = '';
     const isPermanent: boolean = false;

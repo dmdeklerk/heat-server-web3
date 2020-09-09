@@ -1,12 +1,12 @@
-import { TokenDiscoveryParam, TokenDiscoveryResult, tryParse, CallContext } from 'heat-server-common'
+import { TokenDiscoveryParam, TokenDiscoveryResult, tryParse, CallContext, ModuleResponse } from 'heat-server-common'
 
-export async function tokenDiscovery(context: CallContext, param: TokenDiscoveryParam): Promise<{ error?: string, value?: Array<TokenDiscoveryResult> }> {
+export async function tokenDiscovery(context: CallContext, param: TokenDiscoveryParam): Promise<ModuleResponse<Array<TokenDiscoveryResult>>> {
   try {
-    const { req, protocol, host } = context
+    const { req, protocol, host, logger } = context
     const { addrXpub, assetType } = param
     const url = `${protocol}://${host}/api/DISCOVER-TOKENS?assetType=${assetType}&addrXpub=${addrXpub}`;
     const json = await req.get(url);
-    const data = tryParse(json);
+    const data = tryParse(json, logger);
 
     const result: Array<TokenDiscoveryResult> = []
 
