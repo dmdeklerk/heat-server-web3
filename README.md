@@ -22,4 +22,4 @@ Fast iteration is possible as all modules implementations are coded and ready as
 
 ## How to configure
 
-Configure the settings section in `explorer.ts`.
+Configure the settings section in `explorer.ts` at a minimum set the `ID` variable.
