@@ -6,9 +6,9 @@ This SDK was created to assist developers in creating server plugins for Heat mo
 
 Fork and rename the forked repo to include the blockchain name and optionally your personal or organisation name when that name exists already.
 
-For example when creating a plugin for Ripple name your repo: `heat-plugin-ripple`
+For example when creating a plugin for Ripple name your repo: `heat-server-ripple`
 
-If that name is taken and you cannot use the original repo and need to create your own name your repo: `heat-plugin-ripple-dennis` that is if your name or organization name is dennis.
+If that name is taken and you cannot use the original repo and need to create your own name your repo: `heat-server-ripple-dennis` that is if your name or organization name is dennis.
 
 Install dependencies by running `npm install` on the command line.
 
