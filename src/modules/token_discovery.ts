@@ -1,5 +1,4 @@
-import { TokenDiscoveryParam, TokenDiscoveryResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { TokenDiscoveryParam, TokenDiscoveryResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function tokenDiscovery(context: CallContext, param: TokenDiscoveryParam): Promise<{ error?: string, value?: Array<TokenDiscoveryResult> }> {
   try {

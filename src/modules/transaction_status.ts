@@ -1,5 +1,4 @@
-import { TransactionStatusParam, TransactionStatusResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { TransactionStatusParam, TransactionStatusResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function transactionStatus(context: CallContext, param: TransactionStatusParam): Promise<{ error?: string, value?: TransactionStatusResult }> {
   try {

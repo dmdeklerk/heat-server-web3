@@ -1,5 +1,4 @@
-import { UtxoLookupParam, UtxoLookupResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { UtxoLookupParam, UtxoLookupResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function utxoLookup(context: CallContext, param: UtxoLookupParam): Promise<{ error?: string, value?: Array<UtxoLookupResult> }> {
   try {

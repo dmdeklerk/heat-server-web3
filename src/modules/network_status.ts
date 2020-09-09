@@ -1,5 +1,4 @@
-import { NetworkStatusParam, NetworkStatusResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { NetworkStatusParam, NetworkStatusResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function networkStatus(context: CallContext, param: NetworkStatusParam): Promise<{ error?: string, value?: NetworkStatusResult }> {
   try {

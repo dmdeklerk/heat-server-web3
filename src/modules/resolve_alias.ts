@@ -1,5 +1,4 @@
-import { ResolveAliasParam, ResolveAliasResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { ResolveAliasParam, ResolveAliasResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function resolveAlias(context: CallContext, param: ResolveAliasParam): Promise<{ error?: string, value?: ResolveAliasResult }> {
   try {

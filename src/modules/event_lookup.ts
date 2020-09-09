@@ -1,5 +1,4 @@
-import { EventLookupParam, EventLookupResult, EventLookupEvent, tryParse, SourceTypes } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { EventLookupParam, EventLookupResult, EventLookupEvent, tryParse, SourceTypes, CallContext } from 'heat-server-common'
 
 export async function eventLookup(context: CallContext, param: EventLookupParam): Promise<{ error?: string, value?: Array<EventLookupResult> }> {
   try {

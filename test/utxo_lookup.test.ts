@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-const { isObject, isTrue, isNumber, isString, isArray, isBoolean } = chai.assert
+const { isObject, isNumber, isString, isArray } = chai.assert
 import 'mocha';
 import { createContext } from './test_config'
 import { utxoLookup } from '../src/modules/utxo_lookup';

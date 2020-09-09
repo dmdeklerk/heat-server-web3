@@ -1,6 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { MonitoredRequest } from 'heat-server-common';
-import { CallContext } from '../src/call_context.interface';
+import { MonitoredRequest, CallContext } from 'heat-server-common';
 
 export const testConfig = {
   protocol: 'http',

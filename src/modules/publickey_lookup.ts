@@ -1,5 +1,4 @@
-import { PublicKeyLookupParam, PublicKeyLookupResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { PublicKeyLookupParam, PublicKeyLookupResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function publicKeyLookup(context: CallContext, param: PublicKeyLookupParam): Promise<{ error?: string, value?: PublicKeyLookupResult }> {
   try {

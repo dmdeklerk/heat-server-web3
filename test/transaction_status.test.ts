@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-const { isObject, isTrue, isNumber, isString, isBoolean } = chai.assert
+const { isObject, isNumber, isBoolean } = chai.assert
 import 'mocha';
 import { createContext } from './test_config'
 import { transactionStatus } from '../src/modules/transaction_status';

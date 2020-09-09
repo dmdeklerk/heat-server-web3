@@ -1,5 +1,4 @@
-import { NetworkFeeParam, NetworkFeeResult, tryParse } from 'heat-server-common'
-import { CallContext } from '../call_context.interface'
+import { NetworkFeeParam, NetworkFeeResult, tryParse, CallContext } from 'heat-server-common'
 
 export async function networkFee(context: CallContext, param: NetworkFeeParam): Promise<{ error?: string, value?: NetworkFeeResult }> {
   try {
