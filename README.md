@@ -23,3 +23,15 @@ Fast iteration is possible as all modules implementations are coded and ready as
 ## How to configure
 
 Configure the settings section in `explorer.ts` at a minimum set the `ID` variable.
+
+## How to publish
+
+When ready you have to build your code and include the compiled code in your git repo.
+
+### Build your code
+
+Run `npm run prepublish` this will compile your code to javascript which will appear in the `dist` folder
+
+### Include compiled code in git
+
+Open `.gitignore` and remove the line that says `/dist` now add all files in dist to your git repo and commit then push your changes to github.com.
