@@ -10,6 +10,8 @@ For example when creating a plugin for Ripple name your repo: `heat-plugin-rippl
 
 If that name is taken and you cannot use the original repo and need to create your own name your repo: `heat-plugin-ripple-dennis` that is if your name or organization name is dennis.
 
+Install dependencies by running `npm install` on the command line.
+
 ## How to use
 
 To develop your plugin we advise you start by editing `test/test_config.ts` and set the `port` and `host` properties for your blockchain API server.
