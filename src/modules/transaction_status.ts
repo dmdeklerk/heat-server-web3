@@ -4,7 +4,7 @@ export async function transactionStatus(context: CallContext, param: Transaction
   try {
     const { req, protocol, host, logger } = context
     const { blockchain, assetType, addrXpub, transactionId } = param
-    const url = `${protocol}://${host}/api/GET-TRANSACTION-STATUS`;
+    const url = `${protocol}://${host}/api/GET-TRANSACTION-STATUS?transactionId=${transactionId}`;
     const json = await req.get(url);
     const data = tryParse(json, logger);
     
