@@ -1,4 +1,4 @@
-# heat-plugin-sdk
+# heat-server-sdk
 
 This SDK was created to assist developers in creating server plugins for Heat mobile wallet app server.
 
