@@ -10,6 +10,7 @@ import { tokenDiscovery } from './modules/token_discovery'
 import { transactionStatus } from './modules/transaction_status'
 import { utxoLookup } from './modules/utxo_lookup'
 import { broadcast } from './modules/broadcast'
+import { customHeatAccount } from './modules/custom_heat_account'
 import { ModuleProvider } from 'heat-server-common/dist/types/module_provider.interface';
 
 /* ------------------- Configuration Start ------------------- */
@@ -29,7 +30,8 @@ const modules: ModuleProvider = {
   reverseResolveAlias,
   tokenDiscovery,
   transactionStatus,
-  utxoLookup
+  utxoLookup,
+  customHeatAccount
 }
 
 /* ------------------- Configuration End --------------------- */
