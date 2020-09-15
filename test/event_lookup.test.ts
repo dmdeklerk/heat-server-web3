@@ -34,7 +34,7 @@ describe('Event Lookup', () => {
         isNumber(event.type)
         isNumber(event.assetType)
         isString(event.assetId)
-        isObject(event.data)
+        isArray(event.data)
       }
     }
   });
