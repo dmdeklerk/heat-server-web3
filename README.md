@@ -10,8 +10,8 @@ Heat server plugin for Web3 ENS support
 Before cloning, installing depencies and running tests make sure you have installed: git, nodejs 10+ and npm.
 
 ```bash
-$ git clone https://github.com/dmdeklerk/heat-server-heatledger.git
-$ cd heat-server-heatledger
+$ git clone https://github.com/dmdeklerk/heat-server-web3.git
+$ cd heat-server-web3
 $ npm install
 $ npm run test
 ```
