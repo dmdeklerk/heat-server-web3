@@ -9,11 +9,11 @@ describe('Reverse Resolve Alias', () => {
   it('should work', async () => {
     const blockchain: Blockchains = Blockchains.ETHEREUM
     const assetType: AssetTypes = AssetTypes.NATIVE
-    const addrXpub: string = '0x12346'
+    const addrXpub: string = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
     let resp = await reverseResolveAlias(createContext('Reverse'), {
       blockchain, assetType, addrXpub
     })
-    //console.log('response', resp)
+    console.log('response', resp)
     isObject(resp)
     let result = resp.value
     isObject(result)

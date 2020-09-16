@@ -13,7 +13,7 @@ describe('Resolve Alias', () => {
     let resp = await resolveAlias(createContext('Resolve'), {
       blockchain, assetType, alias
     })
-    //console.log('response', resp)
+    console.log('response', resp)
     isObject(resp)
     let result = resp.value
     isObject(result)
