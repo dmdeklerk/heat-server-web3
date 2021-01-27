@@ -1,6 +1,7 @@
 import { RateLimiterClass, ExplorerMiddleware, ExplorerBase } from 'heat-server-common'
 import { resolveAlias } from './modules/resolve_alias'
 import { reverseResolveAlias } from './modules/reverse_resolve_alias'
+import { estimateGas } from './modules/estimate_gas'
 import { ModuleProvider } from 'heat-server-common/dist/types/module_provider.interface';
 
 /* ------------------- Configuration Start ------------------- */
@@ -12,6 +13,7 @@ const ID = "web3"
 const modules: ModuleProvider = {
   resolveAlias,
   reverseResolveAlias,
+  estimateGas,
 }
 
 /* ------------------- Configuration End --------------------- */

@@ -1,4 +1,4 @@
-import { ResolveAliasParam, ResolveAliasResult, tryParse, CallContext, ModuleResponse, prettyPrint } from 'heat-server-common'
+import { ResolveAliasParam, ResolveAliasResult, CallContext, ModuleResponse, prettyPrint } from 'heat-server-common'
 const Web3 = require('web3');
 
 export async function resolveAlias(context: CallContext, param: ResolveAliasParam): Promise<ModuleResponse<ResolveAliasResult>> {

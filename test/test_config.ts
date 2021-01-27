@@ -1,14 +1,13 @@
-import { Logger } from '@nestjs/common';
-import { MonitoredRequest, CallContext } from 'heat-server-common';
+import { MonitoredRequest, CallContext, createLogger } from 'heat-server-common';
 
 export const testConfig = {
-  protocol: 'ws',
-  host: 'eth1.heatwallet.com:8036'
+  protocol: 'wss',
+  host: 'eth1.heatwallet.com/ws'
 }
 
 export function createContext(label?: string) {
   let { host, protocol } = testConfig;
-  let logger = new Logger()
+  let logger = createLogger(label)
   let context: CallContext = {
     host,
     protocol,
