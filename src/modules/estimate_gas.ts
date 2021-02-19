@@ -4,7 +4,7 @@ import { Web3Factory } from '../lib/web3_factory';
 export async function estimateGas(context: CallContext, param: EstimateGasParam): Promise<ModuleResponse<EstimateGasResult>> {
   try {
     const { blockchain, assetType, assetId, addrXpub, value, abi, from, gasLimit } = param
-    const web3 = getWeb3(context);
+    const web3 = await getWeb3(context);
     const abiObject = tryParse(abi)
     const contract = new web3.eth.Contract(abiObject, assetId);
     const gasAmount = await contract.methods.transfer(addrXpub, value).estimateGas({from, gas: gasLimit})
@@ -21,7 +21,12 @@ export async function estimateGas(context: CallContext, param: EstimateGasParam)
 }
 
 let web3Factory;
-function getWeb3(context: CallContext) {
-  web3Factory = web3Factory || (web3Factory = new Web3Factory(`${context.protocol}://${context.host}`));
-  return web3Factory.getWeb3()
+function getWeb3(context: CallContext): Promise<any> {
+  return new Promise((resolve) => {
+    if (!web3Factory) {
+      web3Factory = new Web3Factory(`${context.protocol}://${context.host}`)
+      setTimeout(() => resolve(web3Factory.getWeb3()), 1000)
+    }
+    resolve(web3Factory.getWeb3())
+  })
 }

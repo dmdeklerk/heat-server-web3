@@ -24,7 +24,7 @@ async function resolveAlias(context, param) {
 exports.resolveAlias = resolveAlias;
 async function getAliasAddress(context, alias) {
     try {
-        const web3 = getWeb3(context);
+        const web3 = await getWeb3(context);
         const ens = web3.eth.ens;
         const result = await ens.getAddress(alias);
         return result;
@@ -36,7 +36,12 @@ async function getAliasAddress(context, alias) {
 }
 let web3Factory;
 function getWeb3(context) {
-    web3Factory = web3Factory || (web3Factory = new web3_factory_1.Web3Factory(`${context.protocol}://${context.host}`));
-    return web3Factory.getWeb3();
+    return new Promise((resolve) => {
+        if (!web3Factory) {
+            web3Factory = new web3_factory_1.Web3Factory(`${context.protocol}://${context.host}`);
+            setTimeout(() => resolve(web3Factory.getWeb3()), 1000);
+        }
+        resolve(web3Factory.getWeb3());
+    });
 }
 //# sourceMappingURL=resolve_alias.js.map

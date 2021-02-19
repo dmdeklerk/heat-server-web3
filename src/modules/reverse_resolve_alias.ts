@@ -27,7 +27,7 @@ export async function reverseResolveAlias(context: CallContext, param: ReverseRe
 async function getReverseAddressAlias(context: CallContext, address: string): Promise<string> {
   const { logger } = context  
   try {
-    const web3 = getWeb3(context);
+    const web3 = await getWeb3(context);
     const lookup = address.toLowerCase().substr(2) + '.addr.reverse';
     const ResolverContract = await web3.eth.ens.getResolver(lookup);
     const nh = namehash.hash(lookup);
@@ -52,7 +52,7 @@ async function getReverseAddressAlias(context: CallContext, address: string): Pr
 
 async function getAliasAddress(context: CallContext, alias: string): Promise<string> {
   try {
-    const web3 = getWeb3(context);
+    const web3 = await getWeb3(context);
     const ens = web3.eth.ens;
     const result = await ens.getAddress(alias);
     return result;
@@ -63,7 +63,12 @@ async function getAliasAddress(context: CallContext, alias: string): Promise<str
 }
 
 let web3Factory;
-function getWeb3(context: CallContext) {
-  web3Factory = web3Factory || (web3Factory = new Web3Factory(`${context.protocol}://${context.host}`));
-  return web3Factory.getWeb3()
+function getWeb3(context: CallContext): Promise<any> {
+  return new Promise((resolve) => {
+    if (!web3Factory) {
+      web3Factory = new Web3Factory(`${context.protocol}://${context.host}`)
+      setTimeout(() => resolve(web3Factory.getWeb3()), 1000)
+    }
+    resolve(web3Factory.getWeb3())
+  })
 }
