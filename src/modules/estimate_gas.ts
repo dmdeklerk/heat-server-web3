@@ -1,5 +1,5 @@
 import { CallContext, ModuleResponse, tryParse, EstimateGasParam, EstimateGasResult } from 'heat-server-common'
-const Web3 = require('web3');
+import { Web3Factory } from '../lib/web3_factory';
 
 export async function estimateGas(context: CallContext, param: EstimateGasParam): Promise<ModuleResponse<EstimateGasResult>> {
   try {
@@ -20,7 +20,8 @@ export async function estimateGas(context: CallContext, param: EstimateGasParam)
   }
 }
 
-let _web3;
+let web3Factory;
 function getWeb3(context: CallContext) {
-  return (_web3 = _web3 || new Web3(`${context.protocol}://${context.host}`));
+  web3Factory = web3Factory || (web3Factory = new Web3Factory(`${context.protocol}://${context.host}`));
+  return web3Factory.getWeb3()
 }

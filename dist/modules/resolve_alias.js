@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolveAlias = void 0;
 const heat_server_common_1 = require("heat-server-common");
-const Web3 = require('web3');
+const web3_factory_1 = require("../lib/web3_factory");
 async function resolveAlias(context, param) {
     try {
         const { alias } = param;
@@ -34,8 +34,9 @@ async function getAliasAddress(context, alias) {
     }
     return null;
 }
-let _web3;
+let web3Factory;
 function getWeb3(context) {
-    return (_web3 = _web3 || new Web3(`${context.protocol}://${context.host}`));
+    web3Factory = web3Factory || (web3Factory = new web3_factory_1.Web3Factory(`${context.protocol}://${context.host}`));
+    return web3Factory.getWeb3();
 }
 //# sourceMappingURL=resolve_alias.js.map
