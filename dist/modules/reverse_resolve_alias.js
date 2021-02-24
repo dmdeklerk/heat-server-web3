@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reverseResolveAlias = void 0;
 const heat_server_common_1 = require("heat-server-common");
-const web3_factory_1 = require("../lib/web3_factory");
 const namehash = require('eth-ens-namehash');
+const web3_factory_1 = require("../lib/web3_factory");
 async function reverseResolveAlias(context, param) {
     try {
         const { middleWare } = context;
@@ -30,7 +30,8 @@ exports.reverseResolveAlias = reverseResolveAlias;
 async function getReverseAddressAlias(context, address) {
     const { logger } = context;
     try {
-        const web3 = await getWeb3(context);
+        const url = `${context.protocol}://${context.host}`;
+        const web3 = web3_factory_1.getWeb3(url);
         const lookup = address.toLowerCase().substr(2) + '.addr.reverse';
         const ResolverContract = await web3.eth.ens.getResolver(lookup);
         const nh = namehash.hash(lookup);
@@ -49,7 +50,8 @@ async function getReverseAddressAlias(context, address) {
 }
 async function getAliasAddress(context, alias) {
     try {
-        const web3 = await getWeb3(context);
+        const url = `${context.protocol}://${context.host}`;
+        const web3 = web3_factory_1.getWeb3(url);
         const ens = web3.eth.ens;
         const result = await ens.getAddress(alias);
         return result;
@@ -58,15 +60,5 @@ async function getAliasAddress(context, alias) {
         this.logger.log(`Managed Exception ${heat_server_common_1.prettyPrint(e)}`);
     }
     return null;
-}
-let web3Factory;
-function getWeb3(context) {
-    return new Promise((resolve) => {
-        if (!web3Factory) {
-            web3Factory = new web3_factory_1.Web3Factory(`${context.protocol}://${context.host}`);
-            setTimeout(() => resolve(web3Factory.getWeb3()), 1000);
-        }
-        resolve(web3Factory.getWeb3());
-    });
 }
 //# sourceMappingURL=reverse_resolve_alias.js.map

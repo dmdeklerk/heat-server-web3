@@ -1,7 +1,1 @@
-export declare class Web3Factory {
-    private url;
-    private web3;
-    private checkActive;
-    constructor(url: string);
-    getWeb3(): any;
-}
+export declare function getWeb3(url: string): any;
