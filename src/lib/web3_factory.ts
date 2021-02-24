@@ -1,30 +1,12 @@
 const Web3 = require('web3');
+const servers: Map<string, any> = new Map()
 
-const newProvider = (url) => new Web3.providers.WebsocketProvider(url, {
-  reconnect: {
-    auto: true,
-    delay: 5000, // ms
-    maxAttempts: 5,
-    onTimeout: false,
-  },
-})
-
-export class Web3Factory {
-  private web3: any;
-  private checkActive: () => void;
-
-  constructor(private url: string) {
-    this.web3 = new Web3(newProvider(this.url))
-    this.checkActive = () => {
-      if (!this.web3.currentProvider.connected) {
-        this.web3.setProvider(newProvider(this.url))
-      }
-    }
-    setInterval(this.checkActive, 2000)
+export function getWeb3(url: string) {
+  if (servers.has(url)) {
+    return servers.get(url)
   }
 
-  public getWeb3() {
-    this.checkActive()
-    return this.web3
-  }
+  const web3 = new Web3(new Web3.providers.HttpProvider(url))
+  servers.set(url, web3)
+  return web3
 }

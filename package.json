@@ -1,6 +1,6 @@
 {
   "name": "heat-server-web3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Heat server plugin for Web3 ENS support",
   "main": "dist/index.js",
   "scripts": {

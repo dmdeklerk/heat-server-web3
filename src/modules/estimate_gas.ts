@@ -1,10 +1,11 @@
 import { CallContext, ModuleResponse, tryParse, EstimateGasParam, EstimateGasResult } from 'heat-server-common'
-import { Web3Factory } from '../lib/web3_factory';
+import { getWeb3 } from '../lib/web3_factory';
 
 export async function estimateGas(context: CallContext, param: EstimateGasParam): Promise<ModuleResponse<EstimateGasResult>> {
   try {
     const { blockchain, assetType, assetId, addrXpub, value, abi, from, gasLimit } = param
-    const web3 = await getWeb3(context);
+    const url = `${context.protocol}://${context.host}`
+    const web3 = getWeb3(url);
     const abiObject = tryParse(abi)
     const contract = new web3.eth.Contract(abiObject, assetId);
     const gasAmount = await contract.methods.transfer(addrXpub, value).estimateGas({from, gas: gasLimit})
@@ -18,15 +19,4 @@ export async function estimateGas(context: CallContext, param: EstimateGasParam)
       error: e.message,
     };
   }
-}
-
-let web3Factory;
-function getWeb3(context: CallContext): Promise<any> {
-  return new Promise((resolve) => {
-    if (!web3Factory) {
-      web3Factory = new Web3Factory(`${context.protocol}://${context.host}`)
-      setTimeout(() => resolve(web3Factory.getWeb3()), 1000)
-    }
-    resolve(web3Factory.getWeb3())
-  })
 }

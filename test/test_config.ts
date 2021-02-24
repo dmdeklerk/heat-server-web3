@@ -1,8 +1,12 @@
 import { MonitoredRequest, CallContext, createLogger } from 'heat-server-common';
 
+// export const testConfig = {
+//   protocol: 'wss',
+//   host: 'eth1.heatwallet.com/ws'
+// }
 export const testConfig = {
-  protocol: 'wss',
-  host: 'eth1.heatwallet.com/ws'
+  protocol: 'https',
+  host: 'eth1.heatwallet.com/rpc'
 }
 
 export function createContext(label?: string) {
